@@ -20,7 +20,7 @@ library PriceConverter {
         ) = priceFeed.latestRoundData();
 
         // price returns a value like this => 128133970178
-        // this value is actually 1281.3970178, but we can't see the decimal symbol
+        // this value is actually 1281.33970178, but we can't see the decimal symbol
         // because solidity doesn't work very well with decimal values.
         // msg.value returns a number with 18 decimal places. So for doing math,
         // we need to have both the values with the exact number of digits after the decimal
