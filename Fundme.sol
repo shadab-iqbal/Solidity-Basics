@@ -51,7 +51,9 @@ contract Fundme {
         // and any calculation after this statement will not be exectued (thus no further gas spent)
         // As we are using a library, "this" will be passed as the first argument
         // So, msg.value.getConversionRate() = getConversionRate(msg.value)
-        require(msg.value.getConversionRate() >= (MIN_USD * 1e18), "Please pay the minimum amount of 1 Ether");
+        // multiplying min_usd by 10^18, because "getConversionRate()" will return a value with 18 decimal places
+        // And for correct comparison, we need to have both the values with same number of decimal places
+        require(msg.value.getConversionRate() >= (MIN_USD * 1e18), "Please pay the minimum amount");
         
         // storing the info of donor
         funders.push(msg.sender);
